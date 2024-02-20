@@ -2,10 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:netflix_clone/function/functions.dart';
 import 'package:netflix_clone/widgets/card_home.dart';
+import 'package:netflix_clone/widgets/customSlider.dart';
+import 'package:netflix_clone/widgets/custom_grid.dart';
 import 'package:netflix_clone/widgets/tab_bar.dart';
 
-ValueNotifier<bool> tabNotifier = ValueNotifier(false);
+ValueNotifier<bool> tabNotifier = ValueNotifier(true);
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -57,12 +60,25 @@ class _HomeScreenState extends State<HomeScreen> {
             }
             return true;
           },
-          child: Column(
-            children: [
-              Center(
-                child: cardHome(),
-              )
-            ],
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 119,
+                  ),
+                  Center(
+                    child: cardHome(),
+                  ),
+                  CustomSlider(
+                      title: 'Now Playing', sliderlist: nowplayinglist),
+                  CustomSlider(title: 'Top Rated ', sliderlist: topRatedList),
+                  //CustomSlider(title: 'Top Rated ', sliderlist: allMoviesList)
+                  // CustomGrid(title: 'title', gridList: nowplayinglist)
+                ],
+              ),
+            ),
           ),
         ),
       ),

@@ -6,9 +6,13 @@ Stack cardHome() {
     children: [
       Container(
         height: 400,
-        width: 330,
+        width: 310,
         decoration: BoxDecoration(
-            image: DecorationImage(image: NetworkImage(homeCard)),
+            image: DecorationImage(
+              image: NetworkImage(
+                homeCard,
+              ),
+            ),
             borderRadius: BorderRadius.circular(20),
             border: Border.all(width: 0.5, color: Colors.white)),
       ),
@@ -30,27 +34,35 @@ Stack cardHome() {
 
 TextButton homeButton() {
   return TextButton.icon(
+      style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(
+        Colors.white24,
+      )),
       onPressed: () {},
       icon: const Icon(
         Icons.add,
-        color: Colors.white,
+        color: Color.fromARGB(225, 255, 255, 255),
       ),
       label: const Text(
         "My List",
-        style: TextStyle(color: Colors.white),
+        style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
       ));
 }
 
 TextButton playButtonHome() {
   return TextButton.icon(
       onPressed: () {},
-      style: ButtonStyle(backgroundColor: MaterialStatePropertyAll.),
+      style:
+          ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white)),
       icon: Icon(
         Icons.play_arrow,
         color: Colors.black,
       ),
-      label: const Text(
-        "My List",
-        style: TextStyle(color: Colors.white),
+      label: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 8),
+        child: Text(
+          "Play",
+          style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+        ),
       ));
 }
