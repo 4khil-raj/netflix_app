@@ -1,25 +1,39 @@
 import 'package:flutter/material.dart';
 
-class HomeTabBar extends StatelessWidget {
-  const HomeTabBar({
+class HomeTabBar extends StatefulWidget {
+  HomeTabBar({
     super.key,
+    this.first,
+    this.second,
+    this.third,
   });
+  String? first;
+  String? second;
 
+  String? third;
+
+  @override
+  State<HomeTabBar> createState() => _HomeTabBarState();
+}
+
+class _HomeTabBarState extends State<HomeTabBar> {
   @override
   Widget build(BuildContext context) {
     return TabBar(
-      tabs: const [
+      tabs: [
         Tab(
-          text: 'TV Shows',
+          text: '${widget.first}',
         ),
         Tab(
-          text: 'Movies',
+          text: '${widget.second}',
         ),
-        Tab(
-          text: 'Categories',
-        ),
+        (widget.third != null)
+            ? Tab(
+                text: '${widget.third}',
+              )
+            : SizedBox()
       ],
-      labelPadding: const EdgeInsets.symmetric(horizontal: 16.0),
+      labelPadding: EdgeInsets.symmetric(horizontal: 16.0),
       dividerColor: Colors.black,
       unselectedLabelColor: Colors.white,
       indicatorColor: Colors.white,

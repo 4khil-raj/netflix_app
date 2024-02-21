@@ -5,7 +5,6 @@ import 'package:flutter/rendering.dart';
 import 'package:netflix_clone/function/functions.dart';
 import 'package:netflix_clone/widgets/card_home.dart';
 import 'package:netflix_clone/widgets/customSlider.dart';
-import 'package:netflix_clone/widgets/custom_grid.dart';
 import 'package:netflix_clone/widgets/tab_bar.dart';
 
 ValueNotifier<bool> tabNotifier = ValueNotifier(true);
@@ -47,7 +46,13 @@ class _HomeScreenState extends State<HomeScreen> {
               child: ValueListenableBuilder(
                   valueListenable: tabNotifier,
                   builder: (context, isTabBarVisible, _) {
-                    return isTabBarVisible ? const HomeTabBar() : SizedBox();
+                    return isTabBarVisible
+                        ? HomeTabBar(
+                            first: 'Tv Shows',
+                            second: 'Movies',
+                            third: 'Categories',
+                          )
+                        : SizedBox();
                   })),
         ),
         body: NotificationListener<UserScrollNotification>(

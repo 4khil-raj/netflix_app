@@ -31,17 +31,25 @@ class _MyBottomState extends State<MyBottom> {
         items: const [
           //item:1
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
+            icon: InkResponse(
+                highlightColor: Colors.transparent,
+                splashColor: Colors.transparent,
+                child: Icon(Icons.home_outlined)),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.sports_esports_outlined), label: "Games"),
+              icon: InkResponse(
+                  highlightColor: Colors.transparent,
+                  splashColor: Colors.transparent,
+                  child: Icon(Icons.sports_esports_outlined)),
+              label: "Games"),
           BottomNavigationBarItem(
               icon: Icon(Icons.video_library_outlined), label: "News & hot"),
           BottomNavigationBarItem(
               icon: Icon(Icons.person_2_outlined), label: "My Netflix"),
         ],
         currentIndex: indexNum,
+
         showSelectedLabels: true,
         iconSize: 30,
         showUnselectedLabels: true,

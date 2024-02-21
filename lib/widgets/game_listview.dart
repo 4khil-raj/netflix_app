@@ -20,9 +20,6 @@ class Curstom_list extends StatefulWidget {
 class _CurstomlistState extends State<Curstom_list> {
   @override
   Widget build(BuildContext context) {
-    Future.delayed(Duration(microseconds: 1), () {
-      setState(() {});
-    });
     return Expanded(
         child: (widget.searchText.isEmpty)
             ? ListView.builder(

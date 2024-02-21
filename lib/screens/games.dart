@@ -19,9 +19,8 @@ class _GamesScreenState extends State<GamesScreen> {
 
   @override
   void initState() {
-    getAllmovies();
     _fullMovies = allMoviesList;
-
+    searchController.addListener(onSearch);
     super.initState();
   }
 
@@ -46,10 +45,19 @@ class _GamesScreenState extends State<GamesScreen> {
             controller: searchController,
             style: const TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
             decoration: InputDecoration(
-              suffixIcon: Icon(
-                Icons.mic,
-                color: Colors.white,
-              ),
+              suffixIcon: searchController.text.isEmpty
+                  ? Icon(
+                      Icons.mic,
+                      color: Colors.white,
+                    )
+                  : IconButton(
+                      onPressed: () {
+                        searchController.clear();
+                      },
+                      icon: Icon(
+                        Icons.clear,
+                        color: Colors.white,
+                      )),
               prefixIcon: Icon(
                 Icons.search,
                 color: Colors.white,

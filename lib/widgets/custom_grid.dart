@@ -1,12 +1,12 @@
-// ignore_for_file: unnecessary_string_interpolations
+// ignore_for_file: unnecessary_string_interpolations, avoid_unnecessary_containers, prefer_const_constructors, must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_clone/apikey/api.dart';
 
 class CustomGrid extends StatefulWidget {
-  String title;
   List<Map<String, dynamic>> gridList;
-  CustomGrid({super.key, required this.title, required this.gridList});
+  CustomGrid({super.key, required this.gridList});
 
   @override
   State<CustomGrid> createState() => _CustomGridState();
@@ -18,29 +18,98 @@ class _CustomGridState extends State<CustomGrid> {
     return Expanded(
       child: Column(
         children: [
-          Text('${widget.title}'),
+          SizedBox(
+            height: 8,
+          ),
           SizedBox(
             height: 1000,
-            child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 12.0,
-                  mainAxisSpacing: 12.0,
-                  mainAxisExtent: 290,
-                ),
+            child: ListView.builder(
+                itemCount: widget.gridList.length,
                 itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.fromLTRB(4, 0, 4, 0),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
-                      child: SizedBox(
-                        height: 150,
-                        width: 150,
-                        child: Image.network(
-                            filterQuality: FilterQuality.high,
+                  return Container(
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 300,
+                          width: double.infinity,
+                          child: Image.network(
+                            imageApi + widget.gridList[index]['poster_path'],
                             fit: BoxFit.cover,
-                            imageApi + widget.gridList[index]['poster_path']),
-                      ),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                              const EdgeInsets.only(top: 8, bottom: 2, left: 6),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              SizedBox(
+                                width: 210,
+                                child: Text(
+                                  widget.gridList[index]['title'],
+                                  style: GoogleFonts.rubik(
+                                      color: Colors.white,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  IconButton(
+                                      onPressed: () {},
+                                      icon: Icon(
+                                        Icons.share,
+                                        color: Colors.white,
+                                      )),
+                                  IconButton(
+                                      onPressed: () {},
+                                      icon: Icon(
+                                        Icons.add,
+                                        color: Colors.white,
+                                      )),
+                                  IconButton(
+                                      onPressed: () {},
+                                      icon: Icon(
+                                        Icons.play_arrow,
+                                        color: Colors.white,
+                                      ))
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 6, bottom: 5),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                widget.gridList[index]['release_date'],
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              SizedBox(
+                                width: 8,
+                              ),
+                              Text(
+                                '🔥${widget.gridList[index]['vote_average'].toString()}',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 3, right: 3, bottom: 20),
+                          child: Text(
+                            widget.gridList[index]['overview'],
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                        Divider(),
+                        SizedBox(
+                          height: 25,
+                        )
+                      ],
                     ),
                   );
                 }),
