@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -29,7 +31,7 @@ class _DetailsPageState extends State<DetailsPage> {
         iconTheme: const IconThemeData(color: Colors.white),
         backgroundColor: Colors.black,
         // title: Text("Search Movies"),
-        actions: [
+        actions: const [
           Icon(Icons.search),
           SizedBox(
             width: 8,

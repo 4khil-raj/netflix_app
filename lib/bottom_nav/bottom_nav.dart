@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/screens/games.dart';
 import 'package:netflix_clone/screens/home.dart';
