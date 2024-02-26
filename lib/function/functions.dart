@@ -36,7 +36,6 @@ Future<void> nowPlaying() async {
 }
 
 Future<void> getPopularMovies() async {
-  print('njn ivite unde');
   final response = await http.get(Uri.parse(popular));
   if (response.statusCode == 200) {
     var tempData = jsonDecode(response.body);
